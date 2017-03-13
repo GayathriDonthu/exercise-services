@@ -8,4 +8,8 @@ public interface ActivityRepository {
 
 	List<Activity> findAllActivities();
 
+	Activity findActivity(String activityId);
+
+	void create(Activity activity);
+
 }
