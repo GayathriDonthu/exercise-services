@@ -65,7 +65,9 @@ public class ActivityResource {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Path("{activitId}") // http://localhost:8080/exercise-services/webapi/activities/1234
 	public Activity getActivity(@PathParam ("activityId") String activityId) {
-
+		
+		System.out.println("Getting activityId:" + activityId);
+		
 		return activityRepository.findActivity(activityId);
 
 	}
