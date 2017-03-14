@@ -8,12 +8,26 @@ import com.rest.model.User;
 
 public class ActivityRepositoryStub implements ActivityRepository {
 
-	
 	@Override
 	public void create(Activity activity) {
-		//should issue an insert statement to the db
+		// should issue an insert statement to the db
 	}
 	
+	@Override
+	public Activity update(Activity activity) {
+		
+		// idempotent functionality
+		// search database to see if we have an activity with that id  already
+		//select * from Activity where id=?
+		// if rs size == 0
+		// insert activity into Activity table
+		//else
+		//update the Activity
+		
+		return activity;
+		
+	}
+
 	public List<Activity> findAllActivities() {
 		List<Activity> activities = new ArrayList<Activity>();
 
@@ -34,26 +48,29 @@ public class ActivityRepositoryStub implements ActivityRepository {
 		return activities;
 
 	}
-	
+
 	@Override
 	public Activity findActivity(String activityId) {
-		
-		// We can pull the activities from database here 
+
+		if (activityId.equals("7777")) { // 7777 is just hard coded value
+											// instead of database
+			return null;
+		}
+		// We can pull the activities from database here
 		Activity activity1 = new Activity();
-		
+
 		activity1.setId("1234");
 		activity1.setDescription("Walking");
 		activity1.setDuration(85);
-		
+
 		User user = new User();
-		
+
 		user.setId("5678");
 		user.setName("Gayathri");
-		
+
 		activity1.setUser(user);
-		
+
 		return activity1;
 	}
-	
-	
+
 }
