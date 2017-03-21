@@ -3,6 +3,7 @@ package com.rest.repository;
 import java.util.List;
 
 import com.rest.model.Activity;
+import com.rest.model.ActivitySearch;
 
 public interface ActivityRepository {
 
@@ -17,5 +18,7 @@ public interface ActivityRepository {
 	void delete(String activityId);
 
 	List<Activity> findByDescription(List<String> descriptions, int durationFrom, int durationTo);
+
+	List<Activity> findByConstraints(ActivitySearch search);
 
 }

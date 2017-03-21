@@ -4,54 +4,73 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.rest.model.Activity;
+import com.rest.model.ActivitySearch;
 import com.rest.model.User;
 
 public class ActivityRepositoryStub implements ActivityRepository {
 
 	@Override
-	public List<Activity> findByDescription(List<String> descriptions, int durationFrom, int durationTo) {
+	public List<Activity> findByConstraints(ActivitySearch search) {
 		
-		//	select * from activities where description in (?, ?, ?) and duration > ? and duration < ?
-		
+		System.out.println(search.getDurationFrom());
+
 		List<Activity> activities = new ArrayList<Activity>();
-		
+
 		Activity activity = new Activity();
-		
+
 		activity.setId("724");
 		activity.setDescription("swimming");
 		activity.setDuration(55);
-		
+
 		activities.add(activity);
-		
+
+		return null;
+	}
+
+	@Override
+	public List<Activity> findByDescription(List<String> descriptions, int durationFrom, int durationTo) {
+
+		// select * from activities where description in (?, ?, ?) and duration
+		// > ? and duration < ?
+
+		List<Activity> activities = new ArrayList<Activity>();
+
+		Activity activity = new Activity();
+
+		activity.setId("724");
+		activity.setDescription("swimming");
+		activity.setDuration(55);
+
+		activities.add(activity);
+
 		return activities;
 	}
-	
+
 	@Override
 	public void create(Activity activity) {
 		// should issue an insert statement to the db
 	}
-	
-	
+
 	@Override
 	public void delete(String activityId) {
 
-		//delete from activity where activityId = ?
-		
+		// delete from activity where activityId = ?
+
 	}
-	
+
 	@Override
 	public Activity update(Activity activity) {
-		
+
 		// idempotent functionality
-		// search database to see if we have an activity with that id  already
-		//select * from Activity where id=?
+		// search database to see if we have an activity with that id already
+		// select * from Activity where id=?
 		// if rs size == 0
 		// insert activity into Activity table
-		//else
-		//update the Activity
-		
+		// else
+		// update the Activity
+
 		return activity;
-		
+
 	}
 
 	public List<Activity> findAllActivities() {
